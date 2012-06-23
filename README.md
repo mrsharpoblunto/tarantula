@@ -1,4 +1,4 @@
-tarantula
+Tarantula
 =========
 
 A silverlight based graphical book search engine
