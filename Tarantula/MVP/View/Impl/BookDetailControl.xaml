@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.BookDetailControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,5,5,5">
+    
+    <UserControl.Resources>
+        <Storyboard x:Name="fadeIn">
+            <DoubleAnimation Duration="0:0:0.5" FillBehavior="HoldEnd" Storyboard.TargetName="detail" Storyboard.TargetProperty="Opacity" To="1"/>
+        </Storyboard>
+        <Storyboard x:Name="fadeOut">
+            <DoubleAnimation Duration="0:0:0.5" FillBehavior="HoldEnd" Storyboard.TargetName="detail" Storyboard.TargetProperty="Opacity" To="0"/>
+        </Storyboard>
+    </UserControl.Resources>
+    
+    <Border x:Name="border" Style="{StaticResource Tarantula.BorderStyle}" >
+        <Border x:Name="detail" Style="{StaticResource Tarantula.InverseBorderStyle}" Opacity="0">       
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Image x:Name="image" Width="140" Height="140" Stretch="Uniform"/>
+                <StackPanel Orientation="Vertical" Grid.Column="1">
+                      <TextBlock Style="{StaticResource Tarantula.TitleText}" Text="Book Details" />
+                      <TextBlock x:Name="title" Style="{StaticResource Tarantula.Text}" Text="Title"/>
+                      <TextBlock x:Name="author" Style="{StaticResource Tarantula.Text}" Text="Author"/>
+                      <TextBlock x:Name="lowestNewPrice" Style="{StaticResource Tarantula.Text}" Text="Lowest new price"/>
+                      <TextBlock x:Name="lowestUsedPrice" Style="{StaticResource Tarantula.Text}" Text="Lowest new price"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button x:Name="DetailsButton" Style="{StaticResource Tarantula.ButtonStyle}" Content="View more details" Click="DetailsButton_Click"/></StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>

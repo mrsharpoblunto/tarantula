@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.HelpControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid x:Name="LayoutRoot">
+        <Border Background="#cc000000" CornerRadius="10">
+            <Border x:Name="helpBorder" Style="{StaticResource Tarantula.BorderStyle}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource Tarantula.TitleText}">
+                    Help
+                </TextBlock>
+                    <TextBlock Style="{StaticResource Tarantula.Text}" TextWrapping="Wrap">
+                    This program allows you to explore the books available from Amazon.com in a more tactile and visual manner than is
+                    possible using traditional web based technologies. When you search for books they are returned as visual objects which
+                    can be dragged around, or removed by the user (using the red button on a book object). You can also find books which are similar to other books by clicking
+                    the green button on a book object. This will cause a number of books to appear that are connected to the original book, in this
+                    way it is possible to create visual webs of books and see how they relate to each other.<LineBreak/>
+                </TextBlock>
+                    <TextBlock Style="{StaticResource Tarantula.TitleText}" TextWrapping="Wrap">
+                    Advanced Controls
+                </TextBlock>
+                    <TextBlock Style="{StaticResource Tarantula.Text}" TextWrapping="Wrap">
+                   In addition to the functionality outlined above there are a number of other interesting interface features, these include<LineBreak/><LineBreak/>
+                    <Run FontWeight="Bold" FontSize="11">-Disconnect a book from a web</Run><LineBreak/>
+                    You can disconnect a book from a web by dragging it left to right rapidly in a "shaking" motion, this is handy if you want to keep one book in a web and delete all the rest in one go using the feature described above.<LineBreak/><LineBreak/>
+                    <Run FontWeight="Bold" FontSize="11">-Relink a book to a web</Run><LineBreak/>
+                    If you have shaken a book free from its web, you can relink it by clicking on the green icon on the book that originally spawned the book. Doing so will recreate the link that was broken.<LineBreak/><LineBreak/>
+                    <Run FontWeight="Bold" FontSize="11">-View book details</Run><LineBreak/>
+                    You can view details on a book by clicking on the book cover icon on any book object, once the the book details view appears you can then click on the 'view more details' button which will
+                    take you to the page on Amazon.com which contains all the information on that book (Though depending on your browser settings this may get blocked by popup-blockers). 
+                </TextBlock>
+                    <Button Style="{StaticResource Tarantula.ButtonStyle}" x:Name="OkButton" Content="OK" Click="OkButton_Click" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

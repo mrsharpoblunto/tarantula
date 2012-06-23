@@ -1,0 +1,52 @@
+html
+{
+	background-color:#333333;
+	height:100%; 
+}
+
+body 
+{
+	padding: 0px;
+	margin:0px;
+	height: 100%;
+}
+  
+font, th, td, p 
+{
+	font-family :Verdana,Arial,Helvetica,sans-serif;
+	font-size:10px;
+	color: #ffffff;
+}
+
+a 
+{
+	font-family :Verdana,Arial,Helvetica,sans-serif;
+	font-size:10px;
+	color: #dddddd;
+}
+  
+#container {
+	margin: 0 auto;
+	width: 100%;
+	height: 90%;
+	text-align:center;
+}
+
+#silverlightContainer 
+{
+	margin: 20px auto;
+	border-width: 0px;
+	height: 90%;
+	width:80%;
+}
+
+#adContainer
+{
+	text-align:center;
+}	
+
+#footer
+{
+	padding:5px auto;
+	text-align:center;
+}

@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.BookControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Canvas.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard x:Name ="fadeIn">
+                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="translate" Storyboard.TargetProperty="X" FillBehavior="HoldEnd" From="35" To="0"/>
+                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="translate" Storyboard.TargetProperty="Y" FillBehavior="HoldEnd" From="50" To="0"/>
+                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="scale" Storyboard.TargetProperty="ScaleX" FillBehavior="HoldEnd" From="0" To="1"/>
+                        <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="scale" Storyboard.TargetProperty="ScaleY" FillBehavior="HoldEnd" From="0" To="1"/>
+                        <DoubleAnimation Storyboard.TargetName="container" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" From="0" To="1" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </UserControl.Triggers>
+    
+    <UserControl.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform x:Name="scale"/>
+            <TranslateTransform x:Name="translate"/>
+        </TransformGroup>
+    </UserControl.RenderTransform>
+    
+    <UserControl.Resources>       
+        <Storyboard x:Name ="fadeOut">
+            <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="translate" Storyboard.TargetProperty="X" FillBehavior="HoldEnd" To="35"/>
+            <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="translate" Storyboard.TargetProperty="Y" FillBehavior="HoldEnd" To="50"/>
+            <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="scale" Storyboard.TargetProperty="ScaleX" FillBehavior="HoldEnd" To="0"/>
+            <DoubleAnimation Duration="0:0:0.5" Storyboard.TargetName="scale" Storyboard.TargetProperty="ScaleY" FillBehavior="HoldEnd" To="0"/>
+            <DoubleAnimation Storyboard.TargetName="container" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" To="0" FillBehavior="HoldEnd"/>
+        </Storyboard>
+        
+        <Storyboard x:Name ="expand">
+            <DoubleAnimation Duration="0:0:1" Storyboard.TargetName="shockTranslate" Storyboard.TargetProperty="X" From="0" To="-235"/>
+            <DoubleAnimation Duration="0:0:1" Storyboard.TargetName="shockTranslate" Storyboard.TargetProperty="Y" From="0" To="-250"/>
+            <DoubleAnimation Duration="0:0:1" Storyboard.TargetName="shockScale" Storyboard.TargetProperty="ScaleX" From="0" To="100"/>
+            <DoubleAnimation Duration="0:0:1" Storyboard.TargetName="shockScale" Storyboard.TargetProperty="ScaleY" From="0"  To="100"/>
+            <DoubleAnimation Storyboard.TargetName="wave" Storyboard.TargetProperty="Opacity" Duration="0:0:1" From="1" To="0" FillBehavior="HoldEnd"/>
+        </Storyboard>
+    </UserControl.Resources>
+    
+    <Grid x:Name="container">
+        <Ellipse x:Name="wave" Height="5" Width="5" StrokeThickness="0" Fill="#8dcdff">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="shockScale"/>
+                    <TranslateTransform x:Name="shockTranslate"/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+            <Ellipse.OpacityMask>
+                <RadialGradientBrush GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="1" RadiusY="1">
+                    <RadialGradientBrush.GradientStops>
+                        <GradientStop Color="#008dcdff" Offset="0" />
+                        <GradientStop Color="#ff8dcdff" Offset="1" />
+                    </RadialGradientBrush.GradientStops>
+                </RadialGradientBrush>
+            </Ellipse.OpacityMask>
+        </Ellipse>
+
+
+        <Border Width="72" Height="106" Opacity="0.5" Background="#000000" CornerRadius="10" Margin="3,3,0,0"/>
+        <Border Style="{StaticResource Tarantula.BookStyle}" Width="72" Height="106">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions> 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="bookImage" Grid.ColumnSpan="2" Stretch="Uniform" />
+                <Button x:Name="SpawnButton" Grid.Row="1" Style="{StaticResource Tarantula.BookGreenButtonStyle}" Click="SpawnButton_Click"/>
+                <Button x:Name="DeleteButton" Grid.Row="1" Grid.Column="1" Style="{StaticResource Tarantula.BookRedButtonStyle}" Click="DeleteButton_Click" />
+            </Grid>
+        </Border>
+        <Border Width="71" Height="40" Style="{StaticResource Tarantula.ShineStyle}" Margin="0,0,0,66"/>
+    </Grid>
+</UserControl>

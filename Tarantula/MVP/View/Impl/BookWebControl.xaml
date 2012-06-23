@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.BookWebControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Canvas.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard x:Name="RenderLoopStoryBoard" Duration="0:0:0" Completed="RenderLoopStoryBoard_Completed"/>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </UserControl.Triggers>
+    
+    <Grid x:Name="LayoutRoot" Background="#00000000">
+        <Canvas x:Name="container"/>
+    </Grid>
+</UserControl>

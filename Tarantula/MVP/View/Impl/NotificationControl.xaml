@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.NotificationControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Visibility="Collapsed">
+    
+    <UserControl.Resources>
+        <Storyboard x:Name ="fadeIn" Completed="FadeIn_Completed">
+            <DoubleAnimation Storyboard.TargetName="notificationBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" To="0.8" FillBehavior="HoldEnd"/>
+        </Storyboard>
+        <Storyboard x:Name ="fadeOut" Completed="FadeOut_Completed">
+            <DoubleAnimation Storyboard.TargetName="notificationBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:1" To="0" FillBehavior="HoldEnd"/>
+        </Storyboard>
+        <Storyboard x:Name="timer" Duration="00:00:2" Completed="Timer_Completed"/>
+    </UserControl.Resources>
+
+    <Border x:Name="notificationBorder" Style="{StaticResource Tarantula.BorderStyle}">
+        <TextBlock x:Name="notificationText" FontSize="10"  Foreground="#ffffff"/>
+    </Border>
+</UserControl>

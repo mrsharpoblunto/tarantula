@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.LoadingControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="100" Height="30" Margin="5" Visibility="Collapsed">
+
+    <UserControl.Resources>
+        <Storyboard x:Name ="pulse">
+            <DoubleAnimation Storyboard.TargetName="loadingBorder" Storyboard.TargetProperty="Opacity" AutoReverse="True" RepeatBehavior="Forever" Duration="0:0:0.5" From="0" To="0.8"/>
+        </Storyboard>
+        <Storyboard x:Name ="fadeOut" Completed="FadeOut_Completed">
+            <DoubleAnimation Storyboard.TargetName="loadingBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" To="0" FillBehavior="HoldEnd"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Border x:Name="loadingBorder" Style="{StaticResource Tarantula.BorderStyle}" >
+        <TextBlock FontSize="10"  Foreground="#ffffff" Text="Loading..."/>
+    </Border>
+</UserControl>

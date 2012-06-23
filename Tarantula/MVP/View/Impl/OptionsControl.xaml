@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.OptionsControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="150" 
+    Height="167"
+    Margin="5">
+    <Border x:Name="LayoutRoot" Style="{StaticResource Tarantula.BorderStyle}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Button x:Name="TextSearch" Grid.Row="0" Content="New Search" FontSize="14" Style="{StaticResource Tarantula.GreenButtonStyle}" Click="TextSearch_Click"/>
+            <Button x:Name="ClearResults" Grid.Row="1" Content="Clear All" FontSize="14" Style="{StaticResource Tarantula.RedButtonStyle}" Click="ClearResults_Click"/>
+            <Button x:Name="Help" Grid.Row="2" Content="Help" Style="{StaticResource Tarantula.ButtonStyle}" Click="Help_Click"/>
+        </Grid>
+    </Border>
+</UserControl>

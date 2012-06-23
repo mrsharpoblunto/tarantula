@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.BookConnectorControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Canvas.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard x:Name ="fadeIn">
+                        <DoubleAnimation Storyboard.TargetName="line" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" To="0.5" FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <UserControl.Resources>
+        <Storyboard x:Name ="fadeOut">
+            <DoubleAnimation Storyboard.TargetName="line" Storyboard.TargetProperty="Opacity" Duration="0:0:0.5" To="0" FillBehavior="HoldEnd"/>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Polygon Style="{StaticResource Tarantula.BookConnectorStyle}" x:Name="line"/>
+</UserControl>

@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Tarantula.MVP.View.Impl.TextSearchControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" KeyUp="UserControl_KeyUp">
+    <Grid x:Name="LayoutRoot">
+        <Border Background="#cc000000" CornerRadius="10">
+            <Border x:Name="helpBorder" Style="{StaticResource Tarantula.BorderStyle}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Style="{StaticResource Tarantula.Text}" Text="Search for books on Amazon.com" Grid.ColumnSpan="3"/>
+                    <TextBox Grid.Row="1" x:Name="searchText" MinWidth="500" Style="{StaticResource Tarantula.TextBox}" MaxLength="50"/>
+                    <Button x:Name="searchButton" Content="Search" Style="{StaticResource Tarantula.ButtonStyle}" Grid.Row="1" Grid.Column="1" Click="searchButton_Click" />
+                    <Button x:Name="cancelButton" Content="Cancel" Style="{StaticResource Tarantula.ButtonStyle}" Grid.Row="1" Grid.Column="2" Click="cancelButton_Click"/> 
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

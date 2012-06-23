@@ -1,0 +1,218 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE6AA1AD-EACB-4D1A-BD18-F840F6731FB9}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tarantula</RootNamespace>
+    <AssemblyName>Tarantula</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Tarantula.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Tarantula.App</SilverlightAppEntry>
+    <TestPageFileName>TestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>false</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>ClientBin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>ClientBin\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="MVP\Events\TransitionCompleteEvent.cs" />
+    <Compile Include="MVP\Model\Book.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\Events\BookEvent.cs" />
+    <Compile Include="MVP\Events\BooksFoundEvent.cs" />
+    <Compile Include="MVP\Events\BookWebLoadErrorEvent.cs" />
+    <Compile Include="MVP\Events\GestureEvent.cs" />
+    <Compile Include="MVP\Events\TextSearchEvent.cs" />
+    <Compile Include="MVP\Model\GestureFactory.cs" />
+    <Compile Include="MVP\Model\GestureManager.cs" />
+    <Compile Include="MVP\Model\Gestures\ShakeGesture.cs" />
+    <Compile Include="MVP\Model\IGesture.cs" />
+    <Compile Include="MVP\Presenter\BookDetailPresenter.cs" />
+    <Compile Include="MVP\Presenter\BookWebPresenter.cs" />
+    <Compile Include="MVP\Presenter\TextSearchPresenter.cs" />
+    <Compile Include="MVP\Presenter\HelpPresenter.cs" />
+    <Compile Include="MVP\Presenter\LoadingPresenter.cs" />
+    <Compile Include="MVP\Presenter\NotificationPresenter.cs" />
+    <Compile Include="MVP\Presenter\OptionsPresenter.cs" />
+    <Compile Include="MVP\Presenter\PresenterBase.cs" />
+    <Compile Include="MVP\Resource\BookCache.cs" />
+    <Compile Include="MVP\Resource\SecondaryCache.cs" />
+    <Compile Include="MVP\Resource\SignedRequestHelper.cs" />
+    <Compile Include="MVP\Resource\SortedDictionary.cs" />
+    <Compile Include="MVP\View\IBookConnectorView.cs" />
+    <Compile Include="MVP\View\IBookDetailView.cs" />
+    <Compile Include="MVP\View\IBookView.cs" />
+    <Compile Include="MVP\View\IBookWebView.cs" />
+    <Compile Include="MVP\View\Impl\BookConnectorControl.xaml.cs">
+      <DependentUpon>BookConnectorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\BookControl.xaml.cs">
+      <DependentUpon>BookControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\BookDetailControl.xaml.cs">
+      <DependentUpon>BookDetailControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\BookWebControl.xaml.cs">
+      <DependentUpon>BookWebControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\ITextSearchView.cs" />
+    <Compile Include="MVP\View\IHelpView.cs" />
+    <Compile Include="MVP\View\ILoadingView.cs" />
+    <Compile Include="MVP\View\Impl\HelpControl.xaml.cs">
+      <DependentUpon>HelpControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\LoadingControl.xaml.cs">
+      <DependentUpon>LoadingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\NotificationControl.xaml.cs">
+      <DependentUpon>NotificationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\OptionsControl.xaml.cs">
+      <DependentUpon>OptionsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\Impl\TextSearchControl.xaml.cs">
+      <DependentUpon>TextSearchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVP\View\INotificationView.cs" />
+    <Compile Include="MVP\View\IOptionsView.cs" />
+    <Compile Include="MVP\View\IView.cs" />
+    <Compile Include="MVP\View\Navigation\NavigationHelper.cs" />
+    <Compile Include="MVP\View\Navigation\ITransitionBase.cs" />
+    <Compile Include="MVP\View\Navigation\PopFadeTransition.cs" />
+    <Compile Include="MVP\View\Navigation\PushFadeTransition.cs" />
+    <Compile Include="MVP\View\ViewFactory.cs" />
+    <Compile Include="Page.xaml.cs">
+      <DependentUpon>Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </ApplicationDefinition>
+    <Page Include="Page.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.htm" />
+    <None Include="style_13042008.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Physics\Physics.csproj">
+      <Project>{32E2598A-2492-4A19-90C4-FA6043F217E7}</Project>
+      <Name>Physics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\NotificationControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\LoadingControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\OptionsControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\HelpControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\TextSearchControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\BookWebControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\BookDetailControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\BookControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MVP\View\Impl\BookConnectorControl.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight\v2.0\Microsoft.Silverlight.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
