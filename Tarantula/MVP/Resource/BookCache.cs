@@ -20,7 +20,7 @@ namespace Tarantula.MVP.Resource
     {
         #region constants
 
-        private const string DESTINATION = "ecs.amazonaws.com";
+        private const string DESTINATION = "webservices.amazon.com";
         private const string SERVICE_VERSION = "2011-08-01";
         private const string SERVICE_XMLNS = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
