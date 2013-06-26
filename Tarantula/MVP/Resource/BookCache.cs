@@ -20,7 +20,8 @@ namespace Tarantula.MVP.Resource
     {
         #region constants
 
-        private const string DESTINATION = "webservices.amazon.com";
+        private const string PROXY_URL = "/ProxyHandler.ashx";
+        private const string DESTINATION = "ecs.amazonaws.com";
         private const string SERVICE_VERSION = "2011-08-01";
         private const string SERVICE_XMLNS = "http://webservices.amazon.com/AWSECommerceService/2011-08-01";
 
@@ -88,10 +89,8 @@ namespace Tarantula.MVP.Resource
                 requestParams["Version"] = SERVICE_VERSION;
                 requestParams["AssociateTag"] = Constants.MY_AWS_ASSOCIATE_TAG;
 
-                Uri query = new Uri(_requestSigner.Sign(requestParams), UriKind.Absolute);
-
                 _textSearches.Add(searchText, new List<Book>());
-                WebRequest request = HttpWebRequest.Create(query);
+                WebRequest request = CreateRequest(requestParams);
 
                 TextSearchState state = new TextSearchState();
                 state.SearchText = searchText;
@@ -162,10 +161,8 @@ namespace Tarantula.MVP.Resource
                 requestParams["Version"] = SERVICE_VERSION;
                 requestParams["AssociateTag"] = Constants.MY_AWS_ASSOCIATE_TAG;
 
-                Uri query = new Uri(_requestSigner.Sign(requestParams), UriKind.Absolute);
-
                 _similaritySearches.Add(itemID, new List<Book>());
-                WebRequest request = HttpWebRequest.Create(query);
+                WebRequest request = CreateRequest(requestParams);
 
                 TextSearchState state = new TextSearchState();
                 state.SearchText = itemID;
@@ -211,6 +208,23 @@ namespace Tarantula.MVP.Resource
         }
 
         #endregion
+
+        private HttpWebRequest CreateRequest(IDictionary<string, string> requestParams)
+        {
+            Uri query = new Uri(_requestSigner.Sign(requestParams), UriKind.Absolute);
+
+            if (!string.IsNullOrEmpty(PROXY_URL))
+            {
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(HtmlPage.Document.DocumentUri.Scheme + "://" + HtmlPage.Document.DocumentUri.Host + PROXY_URL);
+                request.Headers["X-Proxy-Url"] = query.ToString();
+                return request;
+            }
+            else
+            {
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(query);
+                return request;
+            }
+        }
 
         public Book FindBook(string itemID)
         {

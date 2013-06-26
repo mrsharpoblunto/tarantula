@@ -156,9 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
+    <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default.htm" />
+    <None Include="ProxyHandler.ashx" />
     <None Include="style_13042008.css" />
   </ItemGroup>
   <ItemGroup>
